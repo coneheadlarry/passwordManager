@@ -8,71 +8,87 @@
 <body>
   <div class="container">
     <h1 class="title">Password Generator 9000</h1>
-    <p>Press "Guide" for an explanation of how certain features work. They are convently located to the right of each button for a given feature. A new button will be placed beside new features. 👋</p>
+    <p>Press "Guide" for an explanation of how certain features work. They are conveniently located to the right of each button for a given feature. A new button will be placed beside new features. 👋</p>
     
-    <!-- Password Generation Form -->
+    <!-- password Generation Form -->
     <form id="generateForm">
       <div class="directions">
         <select id="specialChars">
           <option value="0">0 Special Characters</option>
           <option value="1">1 Special Character</option>
           <option value="2">2 Special Characters</option>
+          <option value="3">3 Special Characters</option>
+          <option value="4">4 Special Characters</option>
         </select>
         <select id="numbers">
           <option value="0">0 Numbers</option>
           <option value="1">1 Number</option>
           <option value="2">2 Numbers</option>
+          <option value="3">3 Numbers</option>
+          <option value="4">4 Numbers</option>
         </select>
         <select id="length">
           <option value="8">8 Characters</option>
           <option value="10">10 Characters</option>
           <option value="12">12 Characters</option>
+          <option value="14">14 Characters</option>
+          <option value="16">16 Characters</option>
+          <option value="18">18 Characters</option>
+          <option value="20">20 Characters</option>
+          <option value="22">22 Characters</option>
+          <option value="24">24 Characters</option>
         </select>
       </div>
-        <button type="button" id="generateBtn">Generate Password</button>
-        <button type="button" id="showGenerateDialog">Guide</button>
-        <button type="button" id="showNewFeatureDialog">New</button>
+      <button type="button" id="generateBtn">Generate Password</button>
+      <button type="button" id="showGenerateDialog">Guide</button>
+      <button type="button" id="showNewFeatureDialog">New</button>
     </form>
 
-    <!--password field-->
+    <!-- password field -->
     <form id="passwordField">
-        <div class="passwordField">
-          <input type="text" id="password-input" placeholder="Password Field">
-        </div>
+      <div class="passwordField">
+        <input type="text" id="password-input" placeholder="Password Field">
+      </div>
     </form>
     <button type="button" id="HistoryBtn">History</button>
     <button id="historyGuide">Guide</button>
 
-    <!--dialog windows/pop ups-->
+    <!-- dialog windows/pop-ups -->
     <dialog id="firstOpen">
-        <p>Hello the application support tab navigation and the use of enter button to interact with the UI.</p>
-
-        <button id="closePopUP">Close</button>
-    </dialog>
-
-
-    <dialog id="confirmEncryptDialog">
-        <p>Are you sure you want to encrypt the password?</p>
-        <button id="confirmEncrypt">Encrypt</button>
-        <button id="closePopUP">Cancel</button>
+      <p>Hello, the application supports tab navigation and the use of the enter button to interact with the UI.</p>
+      <button class="closePopUP">Close</button>
     </dialog>
 
     <dialog id="historyGuideDialog">
-        <p>Pressing the history button will display the last 5 passwords generated. The passwords will be cleared once the application is closed</p>
-        <button id="closePopUP">Close</button>
+      <p>Pressing the history button will display the last 5 passwords generated. The passwords will be cleared once the application is closed.</p>
+      <button class="closePopUP">Close</button>
     </dialog>
 
     <dialog id="generateGuideDialog">
-        <p>Pressing the generate password button will generate a password based on the options selected after a confirmation. The password will be displayed in the password field.</p>
-        <button id="closePopUP">Close</button>
+      <p>Pressing the generate password button will generate a password based on the options selected after a confirmation. The password will be displayed in the password field. There is no password storage so you are responsible for saving them.</p>
+      <button class="closePopUP">Close</button>
     </dialog>
 
     <dialog id="generationConfirmDialog">
-        <p id="confirmationText"></p>
-        <button id="confirmGenerate">Generate</button>
-        <button id="closePopUP">Cancel</button>
+      <p id="confirmationText"></p>
+      <button id="confirmGenerate">Generate</button>
+      <button class="closePopUP">Cancel</button>
     </dialog>
 
+    <dialog id="newFeatureDialog">
+      <p>We have made a feature where users can generate random passwords click guide for a quick explanation on how things work.</p>
+      <button class="closePopUP">Close</button>
+    </dialog>
+
+    <dialog id="historyDialog">
+      <h2>Password History</h2>
+      <ol id="historyList">
+        <!-- passwords will be dynamically inserted here -->
+      </ol>
+      <button class="closePopUP">Close</button>
+    </dialog>
+    
+  </div>
   <script src="renderer.js"></script>
 </body>
 </html>
