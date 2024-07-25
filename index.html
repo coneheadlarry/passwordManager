@@ -31,7 +31,7 @@
       </div>
         <button type="button" id="generateBtn">Generate Password</button>
         <button type="button" id="showGenerateDialog">Guide</button>
-        <button type="button" id="showNewGenerateDialog">New</button>
+        <button type="button" id="showNewFeatureDialog">New</button>
     </form>
 
     <!--password field-->
@@ -60,6 +60,17 @@
     <dialog id="historyGuideDialog">
         <p>Pressing the history button will display the last 5 passwords generated. The passwords will be cleared once the application is closed</p>
         <button id="closePopUP">Close</button>
+    </dialog>
+
+    <dialog id="generateGuideDialog">
+        <p>Pressing the generate password button will generate a password based on the options selected after a confirmation. The password will be displayed in the password field.</p>
+        <button id="closePopUP">Close</button>
+    </dialog>
+
+    <dialog id="generationConfirmDialog">
+        <p id="confirmationText"></p>
+        <button id="confirmGenerate">Generate</button>
+        <button id="closePopUP">Cancel</button>
     </dialog>
 
   <script src="renderer.js"></script>
