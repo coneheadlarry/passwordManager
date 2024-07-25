@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Password Generator 9000</h1>
+    <p>Press "Guide" for an explanation of how certain features work. They are convently located to the right of each button for a given feature. A new button will be placed beside new features. 👋</p>
+    
+    <!-- Password Generation Form -->
+    <form id="generateForm">
+      <div class="directions">
+        <select id="specialChars">
+          <option value="0">0 Special Characters</option>
+          <option value="1">1 Special Character</option>
+          <option value="2">2 Special Characters</option>
+        </select>
+        <select id="numbers">
+          <option value="0">0 Numbers</option>
+          <option value="1">1 Number</option>
+          <option value="2">2 Numbers</option>
+        </select>
+        <select id="length">
+          <option value="8">8 Characters</option>
+          <option value="10">10 Characters</option>
+          <option value="12">12 Characters</option>
+        </select>
+      </div>
+        <button type="button" id="generateBtn">Generate Password</button>
+        <button type="button" id="showGenerateDialog">Guide</button>
+        <button type="button" id="showNewGenerateDialog">New</button>
+    </form>
+
+    <!--password field-->
+    <form id="passwordField">
+        <div class="passwordField">
+          <input type="text" id="password-input" placeholder="Password Field">
+        </div>
+    </form>
+    <button type="button" id="HistoryBtn">History</button>
+    <button id="historyGuide">Guide</button>
+
+    <!--dialog windows/pop ups-->
+    <dialog id="firstOpen">
+        <p>Hello the application support tab navigation and the use of enter button to interact with the UI.</p>
+
+        <button id="closePopUP">Close</button>
+    </dialog>
+
+
+    <dialog id="confirmEncryptDialog">
+        <p>Are you sure you want to encrypt the password?</p>
+        <button id="confirmEncrypt">Encrypt</button>
+        <button id="closePopUP">Cancel</button>
+    </dialog>
+
+    <dialog id="historyGuideDialog">
+        <p>Pressing the history button will display the last 5 passwords generated. The passwords will be cleared once the application is closed</p>
+        <button id="closePopUP">Close</button>
+    </dialog>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
