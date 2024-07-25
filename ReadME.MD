@@ -1,0 +1,1 @@
+This app is a local password generator. It uses electron to run locally.
