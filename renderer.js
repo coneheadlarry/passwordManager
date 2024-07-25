@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const firstTimePopUP = document.getElementById('firstOpen');
   const historyGuideDialog = document.getElementById('historyGuideDialog');
   const historyGuide = document.getElementById('historyGuide');
-  const closeButtons = document.querySelectorAll('#closePopUP'); // Use a specific selector to avoid conflicts
+  const closeButtons = document.querySelectorAll('#closePopUP');
 
   try {
     const firstOpenValue = await window.electron.getFileData();
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     historyGuideDialog.showModal();
   });
 
-  // Add the event listener for password generation
+  // Handle the generate password button click
   document.getElementById('generateBtn').addEventListener('click', async () => {
     const specialChars = document.getElementById('specialChars').value;
     const numbers = document.getElementById('numbers').value;

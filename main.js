@@ -1,7 +1,25 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const { ipcMain } = require('electron');
+
+// Function to generate a password based on given criteria
+function generatePassword(specialChars, numbers, length) {
+  const specialCharSet = '!@#$%^&*()_+[]{}|;:,.<>?';
+  const numberSet = '0123456789';
+  const letterSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  let charset = letterSet;
+  if (parseInt(specialChars) > 0) charset += specialCharSet;
+  if (parseInt(numbers) > 0) charset += numberSet;
+
+  let password = '';
+  for (let i = 0; i < parseInt(length); i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
+  }
+
+  return password;
+}
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -72,7 +90,7 @@ app.on('activate', () => {
   }
 });
 
-// need for communcation between main and renderer process
+// IPC handlers
 ipcMain.handle('get-file-data', async () => {
   const firstOpenPath = path.join(__dirname, 'firstOpen.txt');
   try {
@@ -90,5 +108,16 @@ ipcMain.handle('update-file-data', async (event, data) => {
     await fs.promises.writeFile(firstOpenPath, data);
   } catch (err) {
     console.error('Error updating file:', err);
+  }
+});
+
+// Add the generatePassword handler
+ipcMain.handle('generatePassword', async (event, specialChars, numbers, length) => {
+  try {
+    const password = generatePassword(specialChars, numbers, length);
+    return password;
+  } catch (err) {
+    console.error('Error generating password:', err);
+    return 'Error';
   }
 });
