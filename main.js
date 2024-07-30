@@ -12,14 +12,9 @@ function generatePassword(specialChars, numbers, length) {
   const letterSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   // validate input parameters
-  specialChars = Math.max(0, parseInt(specialChars, 5));
-  numbers = Math.max(0, parseInt(numbers, 5));
-  length = Math.max(specialChars + numbers, parseInt(length, 25)); // Ensure length is at least specialChars + numbers
-
-  // create charset and ensure it meets the requirements
-  let charset = letterSet;
-  if (specialChars > 0) charset += specialCharSet;
-  if (numbers > 0) charset += numberSet;
+  specialChars = Math.min(4, Math.max(0, parseInt(specialChars, 10)));
+  numbers = Math.min(4, Math.max(0, parseInt(numbers, 10)));
+  length = Math.max(specialChars + numbers, parseInt(length, 10)); // Ensure length is at least specialChars + numbers
 
   // generate required number of each character type
   const passwordArray = [];
@@ -30,9 +25,9 @@ function generatePassword(specialChars, numbers, length) {
     passwordArray.push(numberSet[Math.floor(Math.random() * numberSet.length)]);
   }
 
-  // fill the rest with random characters from the combined charset
+  // fill the rest with random characters from the letterSet
   while (passwordArray.length < length) {
-    passwordArray.push(charset[Math.floor(Math.random() * charset.length)]);
+    passwordArray.push(letterSet[Math.floor(Math.random() * letterSet.length)]);
   }
 
   // shuffle the password array for some increased randomness
